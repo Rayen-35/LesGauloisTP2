@@ -13,14 +13,12 @@ public abstract class Personnage {
         return nom;
     }
 
-    protected abstract String donnerAuteur();
-
     public void parler(String texte) {
-        System.out.println(donnerAuteur() + nom + " : << " + texte + " >>");
+        System.out.println("Le " + donnerAuteur() + " " + getNom() + " : « " + texte + " »");
     }
 
     public void frapper(Personnage adversaire) {
-        System.out.println(donnerAuteur() + nom + " envoie un grand coup dans la mâchoire de " + adversaire.getNom());
+        System.out.println("Le " + donnerAuteur() + " " + getNom() + " donne un grand coup au " + adversaire.donnerAuteur() + " " + adversaire.getNom());
         adversaire.recevoirCoup(force / 3);
     }
 
@@ -30,7 +28,9 @@ public abstract class Personnage {
             force = 0;
             parler("J’abandonne...");
         } else {
-            parler("Aïe !");
+            parler("Aïe");
         }
     }
+
+    protected abstract String donnerAuteur();
 }
